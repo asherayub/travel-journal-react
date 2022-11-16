@@ -12,82 +12,77 @@ body {
 }
 nav {
   width: 100%;
-  background-color: #f55a5a;
   padding: 1rem;
   display: flex;
   justify-content: center;
+  background-color: #f55a5a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 .main-content {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  place-items: center;
+  width: 80vw;
+  margin: 0 auto;
 }
-.card-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-block: 2rem;
-}
-
-.card-wrapper img {
-  height: 360px;
-  width: 250px;
-  object-fit: cover;
+/***** Card *****/
+.card__wrapper {
+  /* background-color: #fff; */
+  height: 200px;
+  margin: 1rem;
   border-radius: 0.92rem;
-}
-.description-wrapper {
-  width: 500px;
-}
-.description-wrapper .view-on-maps {
-  display: flex;
+  display: grid;
+  grid-template-columns: 160px auto auto 1fr;
+  grid-template-areas:
+    "image country__name view__maps ."
+    "image location location location"
+    "image dates dates ."
+    "image description description description";
   align-items: center;
-  gap: 1rem;
 }
-.view-on-maps h2 {
-  text-transform: uppercase;
+.image {
+  grid-area: image;
+  width: 150px;
+  height: 200px;
+  border-top-left-radius: 0.92rem;
+  border-bottom-left-radius: 0.92rem;
 }
-.view-on-maps p {
-  color: gray;
+.country__name {
+  grid-area: country__name;
+}
+.view__maps {
+  grid-area: view__maps;
+  margin-inline: 1rem;
+  color: #1c1c1cc8;
   text-decoration: underline;
+  cursor: pointer;
 }
-.name {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #2b283a;
-  margin-block-end: 1rem;
-  text-transform: capitalize;
-}
-.description p {
-  line-height: 1.5;
+.location {
+  grid-area: location;
+  font-size: 2.5rem;
 }
 .dates {
-  margin: 0 0 1rem 0;
+  grid-area: dates;
 }
-.dates span {
-  margin-inline: 0 0.5rem;
-  color: #2b283a;
-  font-weight: 600;
+.description {
+  grid-area: description;
+  line-height: 1.4;
 }
-
-@media (max-width: 800px) {
-  .card-wrapper {
-    flex-direction: column;
-    text-align: center;
+@media (max-width: 690px) {
+  .card__wrapper {
+    height: auto;
+    grid-template-columns: repeat(3, auto);
+    grid-template-areas:
+      "image image image"
+      "country__name view__maps view__maps"
+      "location location location"
+      "dates dates dates"
+      "description description description";
   }
-  .description-wrapper .view-on-maps {
-    justify-content: center;
-  }
-}
-@media (max-width: 600px) {
-  .name {
-    font-size: 2vh;
-  }
-  .card-wrapper img {
-    height: 250px;
-    width: 200px;
-  }
-  .description-wrapper {
-    width: 95%;
+  .image {
+    width: 100%;
+    margin: .5em 0;
+    object-fit: cover;
+    border-radius: 0.92rem;
   }
 }
+/***** End Card *****/

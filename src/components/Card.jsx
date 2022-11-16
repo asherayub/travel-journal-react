@@ -2,24 +2,15 @@ import React from "react";
 
 const Card = ({ img, country, name, fromDate, toDate, description }) => {
   return (
-    <div className="card-wrapper">
-      <img src={img} alt="image of site" />
-      <div className="description-wrapper">
-        <div className="view-on-maps">
-          <h2>{country}</h2>
-          <p>view on maps</p>
-        </div>
-        <div className="name">
-          <h1>{name}</h1>
-        </div>
-        <div className="dates">
-          <span>{fromDate} -</span>
-          <span>{toDate}</span>
-        </div>
-        <div className="description">
-          <p>{description}</p>
-        </div>
-      </div>
+    <div className="card__wrapper">
+      <img className="image" src={img} alt="image of site" />
+      <h2 className="country__name">{country}</h2>
+      <p className="view__maps">view on maps</p>
+      <h1 className="location">{name}</h1>
+      <p className="dates">
+        {fromDate} - {toDate}
+      </p>
+      <p className="description">{description}</p>
     </div>
   );
 };
